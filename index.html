@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>자유형 클래식 인터랙션 — 단계 선택</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- 배경 스택: 배경 + 오버레이 -->
+  <div id="bgStack" aria-hidden="true">
+    <div id="bgLayer"></div>
+    <div id="screenOverlay"></div>
+  </div>
+
+  <!-- UI -->
+  <div class="ui-root">
+    <!-- 고정 헤더(=하단 바) -->
+    <header class="site-header">
+      <h1 class="brand">PORTATO — 나만의 클래식, 우리의 무대</h1>
+      <p class="tagline">당신의 선택이 모여 하나의 공연이 됩니다.</p>
+    </header>
+
+    <main id="app" class="app">
+      <!-- 진행 상태 -->
+      <nav class="progress" aria-label="선택 단계">
+        <ol id="stepDots" class="progress__dots"></ol>
+      </nav>
+
+      <!-- 단계 컨테이너 -->
+      <section class="step" aria-live="polite">
+        <h2 id="stepTitle" class="step__title">단계 제목</h2>
+        <p id="stepHint" class="step__hint">간단 설명</p>
+
+        <!-- 원형 라디얼 셀렉터 -->
+        <div class="radial" id="radialContainer" role="group" aria-labelledby="stepTitle"></div>
+
+        <!-- 내비게이션 -->
+        <div class="nav">
+          <button id="btnPrev" class="btn" type="button">이전</button>
+        </div>
+      </section>
+
+      <!-- (요약 섹션은 result 페이지로 분리되므로 숨김 유지 가능) -->
+      <section id="summary" class="summary hidden" aria-live="polite">
+        <h2 class="step__title">선택 요약</h2>
+        <ul id="summaryList" class="summary__list"></ul>
+        <div class="nav">
+          <button id="btnRestart" class="btn" type="button">처음부터</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- 필요 시 푸터를 쓰고 싶다면 여기(고정 아님) -->
+    <footer class="site-footer">
+      <small>© 2025 PORTATO</small>
+    </footer>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
